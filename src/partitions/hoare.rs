@@ -20,11 +20,11 @@ fn hoare_partition<T: Ord + Clone>(slice: &mut [T], left: usize, right: usize) -
 }
 
 fn _quick_sort<T: Ord + Clone>(slice: &mut [T], left: usize, right: usize) {
-    if left < right {
-        let pi = hoare_partition(slice, left, right);
-        _quick_sort(slice, left, pi);
-        _quick_sort(slice, pi+1, right);
-    }
+        if left < right {
+            let pi = hoare_partition(slice, left, right);
+            _quick_sort(slice, left, pi);
+            _quick_sort(slice, pi+1, right);
+        }
 }
 
 pub fn quick_sort<T: Ord + Clone>(slice: &mut [T]) {

@@ -9,8 +9,9 @@ edition = "2021"
 
 
 [features]
-default = ["hoare"]
+default = ["lomuto"]
 hoare = []
+lomuto = []
 
 [dev-dependencies]
 rand = "0.8.5"

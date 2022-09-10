@@ -9,6 +9,10 @@ impl<T: Ord + Clone> QuickSort for &mut [T] {
     fn quick_sort(self) {
         partitions::hoare::quick_sort(self)
     }
+    #[cfg(feature = "lomuto")]
+    fn quick_sort(self) {
+        partitions::lomuto::quick_sort(self)
+    }
 }
 
 #[cfg(test)]
