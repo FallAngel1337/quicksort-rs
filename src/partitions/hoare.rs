@@ -1,0 +1,1 @@
+pub fn quick_sort<T: Ord>(slice: &[T]) {}

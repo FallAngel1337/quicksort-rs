@@ -1,2 +1,2 @@
 #[cfg(feature = "hoare")]
-mod hoare;
+pub mod hoare;
