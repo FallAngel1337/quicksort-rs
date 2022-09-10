@@ -1,4 +1,3 @@
-// TODO: Add a proc-macro for #[derive(QuickSort)]
 mod partitions;
 
 pub trait QuickSort {
