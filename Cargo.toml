@@ -11,3 +11,6 @@ edition = "2021"
 [features]
 default = ["hoare"]
 hoare = []
+
+[dev-dependencies]
+rand = "0.8.5"
