@@ -1,33 +1,28 @@
-fn hoare_partition<T: Ord + Clone>(slice: &mut [T], left: usize, right: usize) -> usize {
-    let pivot = slice[left].clone();
-    let (mut i, mut j) = (left, right);
+fn hoare_partition<T: PartialOrd>(slice: &mut [T]) -> usize {
+    let pivot = 0;
+    let (mut left, mut right) = (pivot, slice.len() - 1);
     
     loop {
-        while slice[i] < pivot {
-            i += 1
+        while slice[left] < slice[pivot] {
+            left += 1
         }
         
-        while slice[j] > pivot {
-            j -= 1
+        while slice[right] > slice[pivot] {
+            right -= 1
         }
         
-        if i >= j {
-            return j;
+        if left >= right {
+            return right;
         }
 
-        slice.swap(i, j);
+        slice.swap(left, right);    
     }
 }
 
-fn _quick_sort<T: Ord + Clone>(slice: &mut [T], left: usize, right: usize) {
-        if left < right {
-            let pi = hoare_partition(slice, left, right);
-            _quick_sort(slice, left, pi);
-            _quick_sort(slice, pi+1, right);
-        }
-}
-
-pub fn quick_sort<T: Ord + Clone>(slice: &mut [T]) {
-    let (left, right) = (0_usize, slice.len() - 1);
-    _quick_sort(slice, left, right)
+pub fn quick_sort<T: PartialOrd>(slice: &mut [T]) {
+    if slice.len() > 1 {
+        let pi = hoare_partition(slice);
+        quick_sort(&mut slice[..pi]);
+        quick_sort(&mut slice[pi+1..]);
+    }
 }

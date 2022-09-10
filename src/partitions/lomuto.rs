@@ -14,7 +14,7 @@ fn lomuto_partition<T: PartialOrd>(slice: &mut [T]) -> usize {
     i
 }
 
-pub fn quick_sort<T: Ord + Clone>(slice: &mut [T]) {
+pub fn quick_sort<T: PartialOrd>(slice: &mut [T]) {
     if slice.len() > 1 {
         let pi = lomuto_partition(slice);
         quick_sort(&mut slice[..pi]);

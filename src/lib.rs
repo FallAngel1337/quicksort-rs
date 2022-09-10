@@ -4,14 +4,15 @@ pub trait QuickSort {
     fn quick_sort(self);
 }
 
-impl<T: Ord + Clone> QuickSort for &mut [T] {
-    #[cfg(feature = "hoare")]
-    fn quick_sort(self) {
-        partitions::hoare::quick_sort(self)
-    }
+impl<T: PartialOrd> QuickSort for &mut [T] {
     #[cfg(feature = "lomuto")]
     fn quick_sort(self) {
         partitions::lomuto::quick_sort(self)
+    }
+
+    #[cfg(feature = "hoare")]
+    fn quick_sort(self) {
+        partitions::hoare::quick_sort(self)
     }
 }
 
